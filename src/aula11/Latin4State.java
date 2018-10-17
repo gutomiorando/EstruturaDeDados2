@@ -41,9 +41,9 @@ public class Latin4State
 
     public boolean isValid() {
         return colIsValid(0) && colIsValid(1) &&
-               colIsValid(2) && rowIsValid(0) &&
-               rowIsValid(1) && rowIsValid(2) &&
-               colIsValid(3) && rowIsValid(3);
+               colIsValid(2) && colIsValid(3) && 
+               rowIsValid(0) && rowIsValid(1) &&
+               rowIsValid(2) && rowIsValid(3);
     }
 
     public String toString() {

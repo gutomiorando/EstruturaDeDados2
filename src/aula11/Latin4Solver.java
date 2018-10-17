@@ -9,8 +9,12 @@ public class Latin4Solver
     public static void main(String[] args)
     {
         Latin4State start = new Latin4State();
+        // começar com o B na matriz.
         //start.m[1][1] = 'b';
         //start.m[1][2] = 'b';
+        
+        // se começar com duas letras iguais na mesma linha, logo vai ver que terá problema
+        
         solve(start);
         System.out.println("complete states: " + complete_states);
         System.out.println("partial states : " + partial_states);
@@ -33,7 +37,7 @@ public class Latin4Solver
 
         if (!found) { // BASE CASE: matrix is full
             complete_states++;
-            System.out.println(state);
+            //System.out.println(state);
 
             if (state.isValid()) {
                 solutions++;
@@ -44,10 +48,10 @@ public class Latin4Solver
         else { // GENERAL CASE: choose letter to fill an empty position
             partial_states++;
             //System.out.println(state);
-            
-            //Prunning: skip invalid partial states
-            if(! state.isValid() ){ return false;}
-                
+
+            // PRUNNING: skip invalid partial states
+            if (! state.isValid()) { return false; }
+    
             Latin4State sa = new Latin4State(state);
             sa.m[r][c] = 'a';
             if (solve(sa) == true) { return true; }
@@ -59,7 +63,7 @@ public class Latin4Solver
             Latin4State sc = new Latin4State(state);
             sc.m[r][c] = 'c';
             if (solve(sc) == true) { return true; }
-            
+
             Latin4State sd = new Latin4State(state);
             sd.m[r][c] = 'd';
             if (solve(sd) == true) { return true; }
